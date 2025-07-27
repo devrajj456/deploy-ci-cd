@@ -1,4 +1,4 @@
-"# CodeDeploy Application
+# CodeDeploy Application
 resource "aws_codedeploy_app" "app" {
   compute_platform = "Server"
   name             = "${var.project_name}-app"
