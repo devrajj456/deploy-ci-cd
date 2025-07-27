@@ -15,9 +15,6 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
   deployment_group_name = "${var.project_name}-deployment-group"
   service_role_arn      = aws_iam_role.codedeploy_role.arn
 
-  # Deployment configuration
-  deployment_config_name = "CodeDeployDefault.AllInstancesAtOnceServer"
-
   # Auto Rollback configuration
   auto_rollback_configuration {
     enabled = true
