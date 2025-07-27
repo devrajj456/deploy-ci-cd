@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: testing-config
+data:
+  NAME: "Devraj"
+  Envi: "Development"
