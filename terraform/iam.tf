@@ -161,7 +161,7 @@ resource "aws_iam_instance_profile" "ec2_profile" {
   role = aws_iam_role.ec2_role.name
 }
 
-# FIXED: Enhanced EC2 role policy for CodeDeploy agent
+# EC2 role policy for CodeDeploy agent
 resource "aws_iam_role_policy" "ec2_policy" {
   name = "${var.project_name}-ec2-policy"
   role = aws_iam_role.ec2_role.id
@@ -188,29 +188,7 @@ resource "aws_iam_role_policy" "ec2_policy" {
           "logs:PutLogEvents"
         ]
         Resource = "*"
-      },
-      # ADDED: Additional permissions for CodeDeploy agent
-      {
-        Effect = "Allow"
-        Action = [
-          "ec2:DescribeInstances",
-          "ec2:DescribeInstanceStatus",
-          "tag:GetResources",
-          "autoscaling:CompleteLifecycleAction",
-          "autoscaling:DeleteLifecycleHook",
-          "autoscaling:DescribeLifecycleHooks",
-          "autoscaling:DescribeAutoScalingGroups",
-          "autoscaling:PutLifecycleHook",
-          "autoscaling:RecordLifecycleActionHeartbeat"
-        ]
-        Resource = "*"
       }
     ]
   })
-}
-
-# ADDED: Attach additional AWS managed policy for EC2 instances
-resource "aws_iam_role_policy_attachment" "ec2_codedeploy_policy" {
-  role       = aws_iam_role.ec2_role.name
-  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
 }
