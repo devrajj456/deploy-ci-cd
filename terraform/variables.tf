@@ -1,7 +1,7 @@
 variable "aws_region" {
-  description = "AWS region"
+  description = "AWS region"  
   type        = string
-  default     = "us-east-1"
+  default     = "ap-south-1"
 }
 
 variable "project_name" {
@@ -45,5 +45,16 @@ variable "aws_account_id" {
 
 variable "image_repo_name" {
   description = "ECR repository name for Docker images"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t2.micro"
+}
+
+variable "key_pair_name" {
+  description = "EC2 Key Pair name for SSH access"
   type        = string
 }

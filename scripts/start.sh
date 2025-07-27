@@ -1,5 +1,19 @@
 #!/bin/bash
-docker stop $(docker ps -q) || true
-docker rm $(docker ps -aq) || true
-docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
-docker run -d -p 80:80 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
+
+# Start Apache web server
+systemctl start httpd
+systemctl enable httpd
+
+# Check if Apache is running
+if systemctl is-active --quiet httpd; then
+    echo "Apache started successfully"
+else
+    echo "Failed to start Apache"
+    exit 1
+fi
+
+# Set proper permissions
+chown -R apache:apache /var/www/html
+chmod -R 755 /var/www/html
+
+echo "Application started successfully"

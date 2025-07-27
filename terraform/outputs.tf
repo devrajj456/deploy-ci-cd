@@ -22,3 +22,18 @@ output "s3_bucket_arn" {
   description = "ARN of the S3 bucket for artifacts"
   value       = aws_s3_bucket.codepipeline_artifacts.arn
 }
+
+output "codedeploy_app_name" {
+  description = "Name of the CodeDeploy application"
+  value       = aws_codedeploy_app.app.name
+}
+
+output "load_balancer_dns" {
+  description = "DNS name of the load balancer"
+  value       = aws_lb.app_lb.dns_name
+}
+
+output "load_balancer_url" {
+  description = "URL of the application"
+  value       = "http://${aws_lb.app_lb.dns_name}"
+}
