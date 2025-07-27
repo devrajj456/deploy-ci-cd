@@ -41,7 +41,7 @@ resource "aws_codedeploy_deployment_group" "deployment_group" {
   }
 
   # Target instances using Auto Scaling Group
-  auto_scaling_groups = [aws_autoscaling_group.app_asg.name]
+  autoscaling_groups = [aws_autoscaling_group.app_asg.name]
 
   # Load balancer info
   load_balancer_info {

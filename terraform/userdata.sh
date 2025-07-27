@@ -1,10 +1,13 @@
 #!/bin/bash
 yum update -y
 
+# Get current AWS region
+REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/region)
+
 # Install CodeDeploy agent
 yum install -y ruby wget
 cd /home/ec2-user
-wget https://aws-codedeploy-${AWS_DEFAULT_REGION}.s3.${AWS_DEFAULT_REGION}.amazonaws.com/latest/install
+wget https://aws-codedeploy-$REGION.s3.$REGION.amazonaws.com/latest/install
 chmod +x ./install
 ./install auto
 
