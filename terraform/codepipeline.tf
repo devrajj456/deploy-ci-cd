@@ -1,6 +1,6 @@
 # CodePipeline
 resource "aws_codepipeline" "pipeline" {
-  name     = "${var.project_name}-pipeline"
+  name     = "${var.project_name}Pipeline"
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
