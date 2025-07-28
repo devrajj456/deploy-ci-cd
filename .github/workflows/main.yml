@@ -43,9 +43,9 @@ jobs:
     - name: Build Docker Image
       run: docker build -t devrajj11/ci-cd-1:${{ env.VERSION }} .
 
-    # Trivy Image Scan (pinned to a stable version)
+    # Trivy Image Scan (fixed version)
     - name: Trivy Docker Image Scan
-      uses: aquasecurity/trivy-action@v0.11.2
+      uses: aquasecurity/trivy-action@v0.11.3
       with:
         image-ref: devrajj11/ci-cd-1:${{ env.VERSION }}
         format: table
