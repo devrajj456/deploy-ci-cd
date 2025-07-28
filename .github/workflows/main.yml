@@ -18,7 +18,7 @@ jobs:
 
     # tfsec Security Scan for Terraform
     - name: Run tfsec (Terraform security scan)
-      uses: aquasecurity/tfsec-action@v1.0.3
+      uses: aquasecurity/tfsec-action@v0.11.3
       with:
         working-directory: ./terraform
         additional_args: --soft-fail --no-color
